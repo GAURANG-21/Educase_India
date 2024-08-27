@@ -1,0 +1,29 @@
+{
+  "name": "educase-india",
+  "version": "1.0.0",
+  "description": "School Management api",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GAURANG-21/Educase_India.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GAURANG-21/Educase_India/issues"
+  },
+  "homepage": "https://github.com/GAURANG-21/Educase_India#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "nodemon": "^3.1.4",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}
