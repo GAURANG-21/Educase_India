@@ -1,13 +1,16 @@
-import express from "express"
-import bodyParser from "body-parser";
-import { connectDB, disconnectDB } from "./config/connectionDB.js";
-import {env} from './config/configServer.js'
+const express = require('express');
+const bodyParser = require('body-parser');
+const { connectDB, disconnectDB } = require('./config/connectionDB.js');
+const env = require('./config/configServer.js');
+const router = require('./routes/index.js');
+
 
 const app = express();
-await connectDB();
+connectDB();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/api/', router);
 
 app.listen(env.PORT, 
     ()=>{
