@@ -40,7 +40,7 @@ const addressValidator = async (req, res, next) => {
       const aerialDistanceM = aerialDistanceKm * 1000;
       const drivingDistanceM = drivingDistanceKm * 1000;
 
-      if (aerialDistanceM < 300 || drivingDistanceM < 300)
+      if (aerialDistanceM < 500)
         console.log("Distance is less than 300 meters");
       else {
         return res.status(500).json({
