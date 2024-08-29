@@ -8,5 +8,13 @@ module.exports = {
       "database": env.MYSQL_DB,
       "host": env.MYSQL_HOST,
       "dialect": "mysql"
-    }
+    },
+    "production": {
+      "username": env.MYSQL_USER,
+      "password": env.MYSQL_PASSWORD,
+      "database": env.MYSQL_DB,
+      "host": env.MYSQL_HOST,
+      "dialect": "mysql"
+    },
+    
 }
