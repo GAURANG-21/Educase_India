@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+const Sequelize = require('sequelize');
 
 let sequelize;
 
@@ -49,4 +49,7 @@ sequelize?.authenticate().then(() => {
   console.error(`Sequelize authentication error: ${err}`);
 });
 
-export { connectWithRetry as connectDB, disconnectDB };
+module.exports = {
+  connectDB: connectWithRetry,
+  disconnectDB
+};

@@ -1,18 +1,18 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
-import { Sequelize } from 'sequelize';
-import process from 'process';
+const fs = require('fs');
+const path = require('path');
+const process = require('process');
+const { Sequelize } = require('sequelize');
+const { fileURLToPath, pathToFileURL } = require('url');
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = fileURLToPath(__filename);  // Update this to a compatible CommonJS method
 const __dirname = path.dirname(__filename);
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 
-// Ensure the config path is properly handled as a file URL with import assertion for JSON
-const configPath = pathToFileURL(path.join(__dirname, '/../config/config.json')).href;
-const config = (await import(configPath, { assert: { type: 'json' } })).default[env];
+// Load the config file
+const configPath = path.join(__dirname, '/../config/config.json');
+const config = require(configPath)[env];
 
 let sequelize;
 
@@ -34,9 +34,9 @@ fs
       file.slice(-3) === '.js'
     );
   })
-  .forEach(async file => {
-    const modelPath = pathToFileURL(path.join(__dirname, file)).href;
-    const model = (await import(modelPath)).default(sequelize, Sequelize.DataTypes);
+  .forEach(file => {
+    const modelPath = path.join(__dirname, file);
+    const model = require(modelPath)(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
@@ -49,4 +49,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;
