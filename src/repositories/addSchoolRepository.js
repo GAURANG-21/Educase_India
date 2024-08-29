@@ -1,4 +1,4 @@
-const { Schools } = require("../models/index.js");
+const { Schools } = require("../models/schools.js");
 const haversineDistance = require("../utils/distanceFinder.js");
 
 class SchoolRepository {
@@ -42,12 +42,8 @@ class SchoolRepository {
       const schools = await Schools.findAll();
 
       const schoolsWithDistance = await schools.map((school) => {
-        const distance = (
-          latitude,
-          longitude,
-          school.latitude,
-          school.longitude
-        );
+        const distance =
+          (latitude, longitude, school.latitude, school.longitude);
         return { ...school.toJSON(), distance };
       });
 

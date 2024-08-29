@@ -34,7 +34,10 @@ const getAllSchool = async (req, res) => {
         .status(400)
         .json({ error: "Please provide latitude and longitude" });
     }
-    const response = await schoolRepository.getSchoolByDistance({ latitude, longitude });
+    const response = await schoolRepository.getSchoolByDistance({
+      latitude,
+      longitude,
+    });
 
     return res.status(200).json({
       success: true,
