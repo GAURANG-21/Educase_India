@@ -1,20 +1,23 @@
 const env = require('./configServer.js')
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
     "development": {
-      "username": env.MYSQL_USER,
-      "password": env.MYSQL_PASSWORD,
-      "database": env.MYSQL_DB,
-      "host": env.MYSQL_HOST,
-      "dialect": "mysql"
+      "username": process.env.DB_USER,      // Use environment variables for production
+      "password": process.env.DB_PASSWORD,  // PostgreSQL password for production
+      "database": process.env.DB_NAME,      // PostgreSQL database for production
+      "host": process.env.DB_HOST,          // PostgreSQL host for production
+      "port": process.env.DB_PORT,          // PostgreSQL port for production
+      "dialect": "postgres"                 // Set the dialect to 'postgres'
     },
     "production": {
-      "username": env.MYSQL_USER,
-      "password": env.MYSQL_PASSWORD,
-      "database": env.MYSQL_DB,
-      "host": env.MYSQL_HOST,
-      "dialect": "mysql"
+      "username": process.env.DB_USER,      // Use environment variables for production
+      "password": process.env.DB_PASSWORD,  // PostgreSQL password for production
+      "database": process.env.DB_NAME,      // PostgreSQL database for production
+      "host": process.env.DB_HOST,          // PostgreSQL host for production
+      "port": process.env.DB_PORT,          // PostgreSQL port for production
+      "dialect": "postgres"                 // Set the dialect to 'postgres'
     },
     
 }
